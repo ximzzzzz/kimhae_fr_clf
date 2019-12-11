@@ -43,11 +43,11 @@ def seasoning(data):
     data['season'] = data['season'].apply(lambda x : '여름'  if (x ==6) | (x==7) | (x==8)  else x)
     data['season'] = data['season'].apply(lambda x : '가을'  if (x ==9) | (x==10) | (x==11)  else x)
     
-    data['계절평균온도차'] = 0
-    data.loc[data[data['season']=='봄']['tmprtr'].keys(), '계절평균온도차'] = data[data['season']=='봄']['tmprtr'].apply(lambda x : x - 13.893263003271683).get_values()
-    data.loc[data[data['season']=='여름']['tmprtr'].keys(), '계절평균온도차'] = data[data['season']=='여름']['tmprtr'].apply(lambda x : x - 24.737439966590106).get_values()
-    data.loc[data[data['season']=='가을']['tmprtr'].keys(), '계절평균온도차'] = data[data['season']=='가을']['tmprtr'].apply(lambda x : x - 15.416313269493845).get_values()
-    data.loc[data[data['season']=='겨울']['tmprtr'].keys(), '계절평균온도차'] = data[data['season']=='겨울']['tmprtr'].apply(lambda x : x - 2.671166732361056).get_values()
+#     data['계절평균온도차'] = 0
+#     data.loc[data[data['season']=='봄']['tmprtr'].keys(), '계절평균온도차'] = data[data['season']=='봄']['tmprtr'].apply(lambda x : x - 13.893263003271683).get_values()
+#     data.loc[data[data['season']=='여름']['tmprtr'].keys(), '계절평균온도차'] = data[data['season']=='여름']['tmprtr'].apply(lambda x : x - 24.737439966590106).get_values()
+#     data.loc[data[data['season']=='가을']['tmprtr'].keys(), '계절평균온도차'] = data[data['season']=='가을']['tmprtr'].apply(lambda x : x - 15.416313269493845).get_values()
+#     data.loc[data[data['season']=='겨울']['tmprtr'].keys(), '계절평균온도차'] = data[data['season']=='겨울']['tmprtr'].apply(lambda x : x - 2.671166732361056).get_values()
     
     return data
 

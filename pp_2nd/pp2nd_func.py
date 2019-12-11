@@ -36,7 +36,7 @@ def label_encoding(data):
     data.loc[data[data['season']=='가을'].index, 'season'] = 2
     data.loc[data[data['season']=='겨울'].index, 'season'] = 3
     
-    data['season_mean_differ'] = 0
+#     data['season_mean_differ'] = 0
     data.loc[data['season']==0, 'season_mean_differ'] = data[data['season']==0]['tmprtr'].apply(lambda x : x - 13.893263003271683).get_values()
     data.loc[data['season']==1, 'season_mean_differ'] = data[data['season']==1]['tmprtr'].apply(lambda x : x - 24.737439966590106).get_values()
     data.loc[data['season']==2, 'season_mean_differ'] = data[data['season']==2]['tmprtr'].apply(lambda x : x - 15.416313269493845).get_values()
@@ -53,8 +53,9 @@ def emd_nm_encoding(data):
     
     return data
 
-def dt_of_athrztn(data):
-    data.loc[32635, 'dt_of_athrztn'] = 20020227 
+def dt_of_athrztn(data, train):
+    if train:
+        data.loc[32635, 'dt_of_athrztn'] = 20020227 
     data['dt_of_athrztn'].fillna(0, inplace=True)
     data['dt_of_athrztn'] = data['dt_of_athrztn'].astype(float).astype(int)
     data['dt_of_athrztn'] = data['dt_of_athrztn'].astype(str).apply(lambda x : x[:4] if len(x)==8 else x )
