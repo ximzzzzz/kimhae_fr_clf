@@ -68,7 +68,7 @@ def dt_of_athrztn(data, train):
     return data
 
 def wnd_drctn_enc(data):
-    data['wnd_drctn_enc'] = 0
+    data['wnd_drctn_enc'] = np.nan
     data.loc[(data['wnd_drctn'] >=0) & (data['wnd_drctn'] < 45), 'wnd_drctn_enc'] = 0
     data.loc[(data['wnd_drctn'] >=45) & (data['wnd_drctn'] < 90), 'wnd_drctn_enc'] = 1
     data.loc[(data['wnd_drctn'] >=90) & (data['wnd_drctn'] < 135), 'wnd_drctn_enc'] = 2
@@ -76,7 +76,7 @@ def wnd_drctn_enc(data):
     data.loc[(data['wnd_drctn'] >=180) & (data['wnd_drctn'] < 225), 'wnd_drctn_enc'] = 4
     data.loc[(data['wnd_drctn'] >=225) & (data['wnd_drctn'] < 270), 'wnd_drctn_enc'] = 5
     data.loc[(data['wnd_drctn'] >=270) & (data['wnd_drctn'] < 315), 'wnd_drctn_enc'] = 6
-    data.loc[(data['wnd_drctn'] >=315) & (data['wnd_drctn'] < 360), 'wnd_drctn_enc'] = 7
+    data.loc[(data['wnd_drctn'] >=315) & (data['wnd_drctn'] <= 360), 'wnd_drctn_enc'] = 7
     
     return data
 

@@ -10,6 +10,11 @@ from sklearn.impute import IterativeImputer
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 
+def weather_mean(data):
+    data.loc[data['tmprtr'].isnull(), 'tmprtr'] = data['tmprtr'].mean()
+    data.loc[data['hmdt'].isnull(), 'hmdt'] = data['hmdt'].mean()
+    return data
+
 
 def energy_mean(data):
     ele_col = data.columns[data.columns.str.contains('ele')]
@@ -47,6 +52,9 @@ def energy_mean(data):
     data.loc[(data[ele_col].mean(1)==0) & (data['us_yn']=='Y'), 'ele_mean'] = np.nan
 #     data['ele_mean'].fillna(data['ele_mean'].mean())
 
+
+    data = data.join( pd.get_dummies(data['jmk'],prefix='jmk'))
+    
     return data
 
 def Hm_cnt_log_enc(data):
